@@ -88,7 +88,7 @@ class UserLogout(MethodView):
 
 @blp.route("/user/<int:user_id>")
 class User(MethodView):
-    @blp.response(200, UserSchema)
+    @blp.response(200, UserRegisterSchema)
     def get(self, user_id):
         user = UserModel.query.get_or_404(user_id)
         return user
