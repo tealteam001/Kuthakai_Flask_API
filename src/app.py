@@ -7,8 +7,8 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 
 
-from db import db
-from blocklist import BLOCKLIST
+from src.db import db
+from src.blocklist import BLOCKLIST
 import models
 
 from resources.item import blp as ItemBlueprint

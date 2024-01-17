@@ -13,8 +13,8 @@ from flask_jwt_extended import (
 from rq import Queue
 from sqlalchemy import or_
 
-from db import db
-from blocklist import BLOCKLIST
+from src.db import db
+from src.blocklist import BLOCKLIST
 from models import UserModel
 from schemas import UserSchema, UserRegisterSchema
 from tasks import send_user_registration_email

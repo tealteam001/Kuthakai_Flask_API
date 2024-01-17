@@ -5,7 +5,7 @@ from flask_smorest import Blueprint, abort
 
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
 
-from db import db
+from src.db import db
 from models import StoreModel
 from schemas import StoreSchema
 
