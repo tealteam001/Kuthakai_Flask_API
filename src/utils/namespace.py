@@ -55,25 +55,25 @@ class NameSpace:
                 NAME = 'name'
                 DESCRIPTION = 'description' 
                 CREATE_USER_ID= 'create_user_id'
-                FOOD_CATEGORY_ID = 'food_category_id'
             class FoodProtionType: #Fixed
                 TABLE_NAME = 'food_portion_type'
                 ID = 'id'
                 TYPE = 'type' 
-            class MapFoodFoodPortion:
-                TABLE_NAME = 'map_food_food_portion'
+            class MapFoodFoodPortionType:
+                TABLE_NAME = 'map_food_food_portion_type'
                 ID = 'id'
                 FOOD_ID='food_id'
                 FOOD_PORTION_TYPE_ID='food_portion_type_id'
+                CREATE_USER_ID='create_user_id'
             class FoodCategory:
                 TABLE_NAME = 'food_category'
                 ID =  'id'
-                CATEGORY = 'category' 
+                FOOD_CATEGORY = 'food_category' 
                 CREATE_USER_ID='create_user_id'
             class MapFoodFoodCategory:
                 TABLE_NAME = 'map_food_food_category'
                 ID =  'id'
-                CATEGORY_ID = 'category_id' 
+                FOOD_CATEGORY_ID = 'food_category_id' 
                 FOOD_ID ='food_id'
                 CREATE_USER_ID='create_user_id'
 
@@ -83,14 +83,19 @@ class NameSpace:
                 TABLE_NAME = 'order'
                 ID = 'id'
                 DESCRIPTION = 'description' 
+                REQUESTED_TIME = 'requested_time'
+                SUPPLIER_ID = 'supplier_id'
                 CREATE_USER_ID= 'create_user_id'
                 ORDER_TYPE_ID = 'order_type_id'
                 ORDER_STATUS_ID = 'order_status_id'
-            class OrderFood:
-                TABLE_NAME = 'order_food'
+                DISCOUNT_TYPE_ID = 'discount_type_id'
+                CUSTOMER_ID = 'customer_id'
+            class MapOrderFood:
+                TABLE_NAME = 'map_order_food'
                 ID = 'id'
                 ORDER_ID = 'order_id' 
                 FOOD_ID= 'food_id'
+                COUNT = 'count'
             class OrderType: #Fixed
                 TABLE_NAME = 'order_type'
                 ID = 'id'
@@ -98,7 +103,7 @@ class NameSpace:
             class OrderStatus: #Fixed
                 TABLE_NAME = 'map_food_food_portion'
                 ID = 'id'
-                status='status'
+                STATUS='status'
             class DiscountType: #Fixed
                 TABLE_NAME = 'food_category'
                 ID =  'id'
