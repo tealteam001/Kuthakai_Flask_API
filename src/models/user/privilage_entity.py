@@ -8,7 +8,8 @@ class PrivilageEntityModel(db.Model):
     __table_args__ = { "schema":UserNamesSpace.SCHEMA_NAME}
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
+    name = db.Column(db.String(128),unique=True, nullable=False)
+    description = db.Column(db.String(256), nullable=False)
     create_accesses = db.relationship("CreateAccessModel", back_populates="privilage_entity", lazy="dynamic")
     edit_accesses = db.relationship("EditAccessModel", back_populates="privilage_entity", lazy="dynamic")
     delete_accesses = db.relationship("DeleteAccessModel", back_populates="privilage_entity", lazy="dynamic")
@@ -17,6 +18,7 @@ class PrivilageEntityModel(db.Model):
     def __init__(self, data):
         id = data.get(UserNamesSpace.PrivilageEntity.ID)
         self.name = data.get(UserNamesSpace.PrivilageEntity.NAME)
+        self.description = data.get(UserNamesSpace.PrivilageEntity.DESCRIPTION)
 
     def save(self):
         db.session.add(self)

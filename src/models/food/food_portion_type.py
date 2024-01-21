@@ -8,13 +8,15 @@ class FoodPortionTypeModel(db.Model):
     __table_args__ = { "schema":FoodNamesSpace.SCHEMA_NAME}
 
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(80), nullable=False)
-    foods = db.relationship("FoodModel", back_populates="food_portion_types", secondary="map_food_food_portion_type")
+    type = db.Column(db.String(80), nullable=False,unique=True)
+    description = db.Column(db.String(256), nullable=False)
+    foods = db.relationship("FoodModel", back_populates="food_portion_types", secondary=f"{FoodNamesSpace.SCHEMA_NAME}.{FoodNamesSpace.MapFoodFoodPortionType.TABLE_NAME}")
 
 
     def __init__(self, data):
         id = data.get(FoodNamesSpace.FoodProtionType.ID)
         self.type = data.get(FoodNamesSpace.FoodProtionType.TYPE)
+        self.description = data.get(FoodNamesSpace.FoodProtionType.DESCRIPTION)
 
     def save(self):
         db.session.add(self)

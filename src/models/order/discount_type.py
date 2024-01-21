@@ -8,12 +8,14 @@ class DiscountTypeModel(db.Model):
     __table_args__ = { "schema":OrderNamesSpace.SCHEMA_NAME}
 
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(80), nullable=False)
+    type = db.Column(db.String(80), nullable=False, unique=True)
+    description = db.Column(db.String(256), nullable=False)
     orders = db.relationship("OrderModel", back_populates="discount_type", lazy="dynamic")
 
     def __init__(self, data):
         id = data.get(OrderNamesSpace.DiscountType.ID)
         self.type = data.get(OrderNamesSpace.DiscountType.TYPE)
+        self.description = data.get(OrderNamesSpace.DiscountType.DESCRIPTION)
 
     def save(self):
         db.session.add(self)

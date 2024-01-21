@@ -1,5 +1,6 @@
 from src.db import db
 from ...utils import NameSpace
+from sqlalchemy import func
 
 UserNamesSpace = NameSpace.Schemas.UserSchema
 
@@ -11,6 +12,8 @@ class ViewAccessModel(db.Model):
     privilage_entity_id = db.Column(db.Integer,db.ForeignKey(f"{UserNamesSpace.SCHEMA_NAME}.{UserNamesSpace.PrivilageEntity.TABLE_NAME}.{UserNamesSpace.PrivilageEntity.ID}"), nullable=False)
     create_user_id = db.Column(db.Integer,db.ForeignKey(f"{UserNamesSpace.SCHEMA_NAME}.{UserNamesSpace.User.TABLE_NAME}.{UserNamesSpace.User.ID}"), nullable=False)
     user_id = db.Column(db.Integer,db.ForeignKey(f"{UserNamesSpace.SCHEMA_NAME}.{UserNamesSpace.User.TABLE_NAME}.{UserNamesSpace.User.ID}"), nullable=False)
+    created_at = db.Column(db.DateTime, nullbale=False, default=func.now())
+    updated_at = db.Column(db.DateTime, nullbale=False, onupdate=func.now())
     user = db.relationship("UserModel", back_populates="veiw_accesses")
     privilage_entity = db.relationship("PrivilageEntityModel", back_populates="veiw_accesses")
 
@@ -19,6 +22,8 @@ class ViewAccessModel(db.Model):
         self.privilage_entity_id = data.get(UserNamesSpace.ViewAccess.PRIVILAGE_ENTITY_ID)
         self.create_user_id = data.get(UserNamesSpace.ViewAccess.CREATE_USER_ID)
         self.user_id = data.get(UserNamesSpace.ViewAccess.USER_ID)
+        self.created_at = data.get(UserNamesSpace.ViewAccess.CREATED_BY)
+        self.updated_at = data.get(UserNamesSpace.ViewAccess.UPDATED_BY)
 
     def save(self):
         db.session.add(self)

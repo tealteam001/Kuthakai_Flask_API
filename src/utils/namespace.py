@@ -13,38 +13,50 @@ class NameSpace:
                 NIC = 'nic'
                 CREATE_USER_ID='create_user_id'
                 USER_TYPE_ID='user_type_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
             class UserType: #Fixed
                 TABLE_NAME = 'user_type'
                 ID =  'id'
                 TYPE = 'type' 
+                DESCRIPTION = 'description' 
             class PrivilageEntity: #Fixed
                 TABLE_NAME = 'privilage_entity'
                 ID =  'id'
                 NAME = 'name' 
+                DESCRIPTION = 'description' 
             class DeleteAccess:
                 TABLE_NAME = 'delete_access'
                 ID =  'id'
                 PRIVILAGE_ENTITY_ID = 'privilage_entity_id'
                 USER_ID = 'user_id'
                 CREATE_USER_ID='create_user_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
             class CreateAccess:
                 TABLE_NAME = 'create_access'
                 ID =  'id'
                 PRIVILAGE_ENTITY_ID = 'privilage_entity_id'
                 USER_ID = 'user_id'
                 CREATE_USER_ID='create_user_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
             class EditAccess:
                 TABLE_NAME = 'edit_access'
                 ID =  'id'
                 PRIVILAGE_ENTITY_ID = 'privilage_entity_id'
                 USER_ID = 'user_id'
                 CREATE_USER_ID='create_user_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
             class ViewAccess:
                 TABLE_NAME = 'view_access'
                 ID =  'id'
                 PRIVILAGE_ENTITY_ID = 'privilage_entity_id'
                 USER_ID = 'user_id'
                 CREATE_USER_ID='create_user_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
 
         class FoodSchema:
             SCHEMA_NAME='food'
@@ -55,9 +67,12 @@ class NameSpace:
                 NAME = 'name'
                 DESCRIPTION = 'description' 
                 CREATE_USER_ID= 'create_user_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
             class FoodProtionType: #Fixed
                 TABLE_NAME = 'food_portion_type'
                 ID = 'id'
+                DESCRIPTION = 'description' 
                 TYPE = 'type' 
             class MapFoodFoodPortionType:
                 TABLE_NAME = 'map_food_food_portion_type'
@@ -65,17 +80,24 @@ class NameSpace:
                 FOOD_ID='food_id'
                 FOOD_PORTION_TYPE_ID='food_portion_type_id'
                 CREATE_USER_ID='create_user_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
             class FoodCategory:
                 TABLE_NAME = 'food_category'
                 ID =  'id'
                 FOOD_CATEGORY = 'food_category' 
+                DESCRIPTION = 'description' 
                 CREATE_USER_ID='create_user_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
             class MapFoodFoodCategory:
                 TABLE_NAME = 'map_food_food_category'
                 ID =  'id'
                 FOOD_CATEGORY_ID = 'food_category_id' 
                 FOOD_ID ='food_id'
                 CREATE_USER_ID='create_user_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
 
         class OrderSchema:
             SCHEMA_NAME='order'
@@ -90,24 +112,31 @@ class NameSpace:
                 ORDER_STATUS_ID = 'order_status_id'
                 DISCOUNT_TYPE_ID = 'discount_type_id'
                 CUSTOMER_ID = 'customer_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
             class MapOrderFood:
                 TABLE_NAME = 'map_order_food'
                 ID = 'id'
                 ORDER_ID = 'order_id' 
                 FOOD_ID= 'food_id'
                 COUNT = 'count'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
             class OrderType: #Fixed
                 TABLE_NAME = 'order_type'
                 ID = 'id'
                 TYPE = 'type' 
+                DESCRIPTION = 'description' 
             class OrderStatus: #Fixed
                 TABLE_NAME = 'map_food_food_portion'
                 ID = 'id'
                 STATUS='status'
+                DESCRIPTION = 'description' 
             class DiscountType: #Fixed
                 TABLE_NAME = 'food_category'
                 ID =  'id'
                 TYPE='type'
+                DESCRIPTION = 'description' 
 
         class CustomerSchema:
             SCHEMA_NAME='customer'
@@ -120,6 +149,8 @@ class NameSpace:
                 PASSWORD = 'password'
                 PHONE_NUMBER = 'phone_number'
                 CREATE_USER_ID='create_user_id'
+                CREATED_BY = 'created_at'
+                UPDATED_BY = 'updated_at'
 
 
     class BluePrint:

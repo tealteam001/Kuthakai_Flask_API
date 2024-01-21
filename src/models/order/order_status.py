@@ -8,12 +8,14 @@ class OrderStatusModel(db.Model):
     __table_args__ = { "schema":OrderNamesSpace.SCHEMA_NAME}
 
     id = db.Column(db.Integer, primary_key=True)
-    status = db.Column(db.String(80), nullable=False)
+    status = db.Column(db.String(80),unique=True, nullable=False )
+    description = db.Column(db.String(256), nullable=False)
     orders = db.relationship("OrderModel", back_populates="order_status", lazy="dynamic")
 
     def __init__(self, data):
         id = data.get(OrderNamesSpace.OrderStatus.ID)
         self.status = data.get(OrderNamesSpace.OrderStatus.STATUS)
+        self.description = data.get(OrderNamesSpace.OrderStatus.DESCRIPTION)
 
     def save(self):
         db.session.add(self)
