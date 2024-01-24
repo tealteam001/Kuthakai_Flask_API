@@ -111,6 +111,7 @@ class NameSpace:
                 ORDER_TYPE_ID = 'order_type_id'
                 ORDER_STATUS_ID = 'order_status_id'
                 DISCOUNT_TYPE_ID = 'discount_type_id'
+                PAYMENT_TYPE_ID = 'payment_type_id'
                 CUSTOMER_ID = 'customer_id'
                 CREATED_BY = 'created_at'
                 UPDATED_BY = 'updated_at'
@@ -134,6 +135,11 @@ class NameSpace:
                 DESCRIPTION = 'description' 
             class DiscountType: #Fixed
                 TABLE_NAME = 'food_category'
+                ID =  'id'
+                TYPE='type'
+                DESCRIPTION = 'description' 
+            class PaymentType: #Fixed
+                TABLE_NAME = 'payment_type'
                 ID =  'id'
                 TYPE='type'
                 DESCRIPTION = 'description' 

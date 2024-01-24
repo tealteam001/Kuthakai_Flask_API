@@ -25,6 +25,7 @@ class OrderModel(db.Model):
     order_type = db.relationship("OrderTypeModel", back_populates="orders")
     order_status = db.relationship("OrderStatusModel", back_populates="orders")
     discount_type = db.relationship("DiscountTypeModel", back_populates="orders")
+    payment_type = db.relationship("PaymentTypeModel", back_populates="orders")
     customer = db.relationship("CustomerModel", back_populates="customers")
 
     def __init__(self, data):
@@ -36,6 +37,7 @@ class OrderModel(db.Model):
         self.create_user_id = data.get(OrderNamesSpace.Order.CREATE_USER_ID)
         self.order_type_id= data.get(OrderNamesSpace.Order.ORDER_TYPE_ID)
         self.discount_type_id= data.get(OrderNamesSpace.Order.DISCOUNT_TYPE_ID)
+        self.payment_type_id= data.get(OrderNamesSpace.Order.PAYMENT_TYPE_ID)
         self.order_status_id= data.get(OrderNamesSpace.Order.ORDER_STATUS_ID)
         self.created_at = data.get(OrderNamesSpace.Order.CREATED_BY)
         self.updated_at = data.get(OrderNamesSpace.Order.UPDATED_BY)
