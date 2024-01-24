@@ -1,0 +1,5 @@
+from .food import FoodModel
+from .food_category import FoodCategoryModel
+from .food_portion_type import FoodPortionTypeModel
+from .map_food_food_category import MapFoodFoodCategoryModel
+from .map_food_food_portion_type import MapFoodFoodPortionTypeModel
