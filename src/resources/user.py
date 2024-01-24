@@ -15,9 +15,9 @@ from sqlalchemy import or_
 
 from src.db import db
 from src.blocklist import BLOCKLIST
-from models import UserModel
-from schemas import UserSchema, UserRegisterSchema
-from tasks import send_user_registration_email
+from ..models import UserModel
+from ..schemas import UserSchema, UserRegisterSchema
+from ..tasks import send_user_registration_email
 
 
 blp = Blueprint("Users", "users", description="Operations on users")

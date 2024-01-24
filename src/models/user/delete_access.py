@@ -12,8 +12,8 @@ class DeleteAccessModel(db.Model):
     privilage_entity_id = db.Column(db.Integer,db.ForeignKey(f"{UserNamesSpace.SCHEMA_NAME}.{UserNamesSpace.PrivilageEntity.TABLE_NAME}.{UserNamesSpace.PrivilageEntity.ID}"), nullable=False)
     create_user_id = db.Column(db.Integer,db.ForeignKey(f"{UserNamesSpace.SCHEMA_NAME}.{UserNamesSpace.User.TABLE_NAME}.{UserNamesSpace.User.ID}"), nullable=False)
     user_id = db.Column(db.Integer,db.ForeignKey(f"{UserNamesSpace.SCHEMA_NAME}.{UserNamesSpace.User.TABLE_NAME}.{UserNamesSpace.User.ID}"), nullable=False)
-    created_at = db.Column(db.DateTime, nullbale=False, default=func.now())
-    updated_at = db.Column(db.DateTime, nullbale=False, onupdate=func.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, onupdate=func.now())
     user = db.relationship("UserModel", back_populates="delete_accesses")
     privilage_entity = db.relationship("PrivilageEntityModel", back_populates="delete_accesses")
 

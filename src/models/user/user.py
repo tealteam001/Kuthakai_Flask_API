@@ -15,8 +15,8 @@ class UserModel(db.Model):
     nic= db.Column(db.String(128), unique=True, nullable=False)
     create_user_id = db.Column(db.Integer,db.ForeignKey(f"{UserNamesSpace.SCHEMA_NAME}.{UserNamesSpace.User.TABLE_NAME}.{UserNamesSpace.User.ID}"),nullable=False)
     user_type_id = db.Column(db.Integer,db.ForeignKey(f"{UserNamesSpace.SCHEMA_NAME}.{UserNamesSpace.UserType.TABLE_NAME}.{UserNamesSpace.UserType.ID}"),nullable=False)
-    created_at = db.Column(db.DateTime, nullbale=False, default=func.now())
-    updated_at = db.Column(db.DateTime, nullbale=False, onupdate=func.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, onupdate=func.now())
 
     creator = db.relationship('UserModel', remote_side=[id], back_populates='users')
     users = db.relationship('UserModel', back_populates='creator', lazy='dynamic')

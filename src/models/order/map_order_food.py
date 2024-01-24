@@ -14,8 +14,8 @@ class MapOrderFoodModel(db.Model):
     food_id = db.Column(db.Integer, db.ForeignKey(f"{FoodNamesSpace.SCHEMA_NAME}.{FoodNamesSpace.Food.TABLE_NAME}.{FoodNamesSpace.Food.ID}"),nullable=False)
     order_id = db.Column(db.Integer,db.ForeignKey(f"{OrderNamesSpace.SCHEMA_NAME}.{OrderNamesSpace.Order.TABLE_NAME}.{OrderNamesSpace.Order.ID}"),nullable=False)
     count = db.Column(db.Integer, nullable=False)
-    created_at = db.Column(db.DateTime, nullbale=False, default=func.now())
-    updated_at = db.Column(db.DateTime, nullbale=False, onupdate=func.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, onupdate=func.now())
 
     def __init__(self, data):
         id = data.get(OrderNamesSpace.MapOrderFood.ID)

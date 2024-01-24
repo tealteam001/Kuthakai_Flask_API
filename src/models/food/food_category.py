@@ -14,8 +14,8 @@ class FoodCategoryModel(db.Model):
     food_category = db.Column(db.String(128), nullable=False, unique=True)
     description = db.Column(db.String(256), nullable=False)
     create_user_id = db.Column(db.Integer,db.ForeignKey(f"{UserNamesSpace.SCHEMA_NAME}.{UserNamesSpace.User.TABLE_NAME}.{UserNamesSpace.User.ID}"),nullable=False)
-    created_at = db.Column(db.DateTime, nullbale=False, default=func.now())
-    updated_at = db.Column(db.DateTime, nullbale=False, onupdate=func.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, onupdate=func.now())
     foods = db.relationship("FoodModel", back_populates="food_categories", secondary= f"{FoodNamesSpace.SCHEMA_NAME}.{FoodNamesSpace.MapFoodFoodCategory.TABLE_NAME}")
 
     def __init__(self, data):

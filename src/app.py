@@ -9,15 +9,16 @@ from dotenv import load_dotenv
 
 from src.db import db
 from src.blocklist import BLOCKLIST
-import models
+# import models
 
-from resources.item import blp as ItemBlueprint
-from resources.store import blp as StoreBlueprint
-from resources.tag import blp as TagBlueprint
-from resources.user import blp as UserBlueprint
+from .resources.item import blp as ItemBlueprint
+from .resources.store import blp as StoreBlueprint
+from .resources.tag import blp as TagBlueprint
+from .resources.user import blp as UserBlueprint
 
 
 def create_app(db_url=None):
+    print('create_app')
     app = Flask(__name__)
     load_dotenv()
 
@@ -31,7 +32,9 @@ def create_app(db_url=None):
     app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv("DATABASE_URL", "sqlite:///data.db")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
+    print('before migrate')
     migrate = Migrate(app, db)
+    print('after migrate')
     api = Api(app)
 
     app.config["JWT_SECRET_KEY"] = "jose"
@@ -101,8 +104,10 @@ def create_app(db_url=None):
     # def create_tables():
     #     db.create_all()
     with app.app_context():
-        db.create_all()
-        
+        try:
+            db.create_all()
+        except Exception as e:
+            print(f"Error creating database tables: {e}")
 
     api.register_blueprint(ItemBlueprint)
     api.register_blueprint(StoreBlueprint)

@@ -4,8 +4,8 @@ from flask_jwt_extended import jwt_required, get_jwt
 from sqlalchemy.exc import SQLAlchemyError
 
 from src.db import db
-from models import ItemModel
-from schemas import ItemSchema, ItemUpdateSchema
+from ..models import ItemModel
+from ..schemas import ItemSchema, ItemUpdateSchema
 
 blp = Blueprint("Items", __name__, description="Operations on items")
 

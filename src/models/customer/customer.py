@@ -16,8 +16,8 @@ class CustomerModel(db.Model):
     password = db.Column(db.String(128), nullable=False)
     phone_number= db.Column(db.Integer, nullable=False)
     create_user_id = db.Column(db.Integer,db.ForeignKey(f"{UserNamesSpace.SCHEMA_NAME}.{UserNamesSpace.User.TABLE_NAME}.{UserNamesSpace.User.ID}"),nullable=False)
-    created_at = db.Column(db.DateTime, nullbale=False, default=func.now())
-    updated_at = db.Column(db.DateTime, nullbale=False, onupdate=func.now())
+    created_at = db.Column(db.DateTime, nullable=False, default=func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, onupdate=func.now())
     orders = db.relationship("CustomerModel", back_populates="customer", lazy="dynamic")
 
     def __init__(self, data):
