@@ -14,14 +14,17 @@ class MapOrderFoodModel(db.Model):
     food_id = db.Column(db.Integer, db.ForeignKey(f"{FoodNamesSpace.SCHEMA_NAME}.{FoodNamesSpace.Food.TABLE_NAME}.{FoodNamesSpace.Food.ID}"),nullable=False)
     order_id = db.Column(db.Integer,db.ForeignKey(f"{OrderNamesSpace.SCHEMA_NAME}.{OrderNamesSpace.Order.TABLE_NAME}.{OrderNamesSpace.Order.ID}"),nullable=False)
     count = db.Column(db.Integer, nullable=False)
+    order_food_status_id = db.Column(db.Integer,db.ForeignKey(f"{OrderNamesSpace.SCHEMA_NAME}.{OrderNamesSpace.Order.TABLE_NAME}.{OrderNamesSpace.OrderFoodStatus.ID}"),nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=func.now())
     updated_at = db.Column(db.DateTime, nullable=False, onupdate=func.now())
+    order_food_status = db.relationship("OrderFoodStatusModel", back_populates="order_foods")
 
     def __init__(self, data):
         id = data.get(OrderNamesSpace.MapOrderFood.ID)
         self.food_id = data.get(OrderNamesSpace.MapOrderFood.FOOD_ID)
         self.order_id = data.get(OrderNamesSpace.MapOrderFood.ORDER_ID)
         self.count = data.get(OrderNamesSpace.MapOrderFood.COUNT)
+        self.order_food_status_id = data.get(OrderNamesSpace.MapOrderFood.ORDER_FOOD_STATUS_ID)
         self.create_user_id = data.get(UserNamesSpace.User.CREATE_USER_ID)
         self.created_at = data.get(OrderNamesSpace.MapOrderFood.CREATED_BY)
         self.updated_at = data.get(OrderNamesSpace.MapOrderFood.UPDATED_BY)

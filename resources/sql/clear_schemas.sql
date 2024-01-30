@@ -1,14 +1,4 @@
-# REST APIs Recording Project
 
-Nothing here yet!
-
-
-Sun 7 Jan:
-1. Created the necessary schemas such as user, customer, order and food
-2. Initialize the back end code architecture
-
-
-To delete tables of specific schemas:
 DROP TABLE "order".map_order_food;
 DROP TABLE "order"."order";
 DROP TABLE customer.customer;
@@ -30,7 +20,6 @@ DROP TABLE "user".privilage_entity;
 DROP TABLE "user".user;
 DROP TABLE "user".user_type;
 
-public schemas:
 DROP TABLE alembic_version;
 DROP TABLE items_tags;
 DROP TABLE items;

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 363ac0f39149
-Revises: 752821d73f5e
-Create Date: 2024-01-25 00:24:24.974755
+Revision ID: 71a7fe3fe03e
+Revises: 
+Create Date: 2024-01-30 06:00:08.661546
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '363ac0f39149'
-down_revision = '752821d73f5e'
+revision = '71a7fe3fe03e'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -26,7 +26,7 @@ def upgrade():
     sa.UniqueConstraint('type'),
     schema='food'
     )
-    op.create_table('food_category',
+    op.create_table('discount_type',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String(length=80), nullable=False),
     sa.Column('description', sa.String(length=256), nullable=False),
@@ -34,7 +34,7 @@ def upgrade():
     sa.UniqueConstraint('type'),
     schema='order'
     )
-    op.create_table('map_food_food_portion',
+    op.create_table('order_status',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('status', sa.String(length=80), nullable=False),
     sa.Column('description', sa.String(length=256), nullable=False),
@@ -225,8 +225,8 @@ def upgrade():
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['create_user_id'], ['user.user.id'], ),
     sa.ForeignKeyConstraint(['customer_id'], ['customer.customer.id'], ),
-    sa.ForeignKeyConstraint(['discount_type_id'], ['order.food_category.id'], ),
-    sa.ForeignKeyConstraint(['order_status_id'], ['order.map_food_food_portion.id'], ),
+    sa.ForeignKeyConstraint(['discount_type_id'], ['order.discount_type.id'], ),
+    sa.ForeignKeyConstraint(['order_status_id'], ['order.order_status.id'], ),
     sa.ForeignKeyConstraint(['order_type_id'], ['order.order_type.id'], ),
     sa.ForeignKeyConstraint(['supplier_id'], ['user.user.id'], ),
     sa.PrimaryKeyConstraint('id'),
@@ -237,9 +237,11 @@ def upgrade():
     sa.Column('food_id', sa.Integer(), nullable=False),
     sa.Column('order_id', sa.Integer(), nullable=False),
     sa.Column('count', sa.Integer(), nullable=False),
+    sa.Column('order_food_status_id', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['food_id'], ['food.food.id'], ),
+    sa.ForeignKeyConstraint(['order_food_status_id'], ['order.order.id'], ),
     sa.ForeignKeyConstraint(['order_id'], ['order.order.id'], ),
     sa.PrimaryKeyConstraint('id'),
     schema='order'
@@ -277,7 +279,7 @@ def downgrade():
     op.drop_table('privilage_entity', schema='user')
     op.drop_table('payment_type', schema='order')
     op.drop_table('order_type', schema='order')
-    op.drop_table('map_food_food_portion', schema='order')
-    op.drop_table('food_category', schema='order')
+    op.drop_table('order_status', schema='order')
+    op.drop_table('discount_type', schema='order')
     op.drop_table('food_portion_type', schema='food')
     # ### end Alembic commands ###

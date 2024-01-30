@@ -23,3 +23,4 @@ from .order import OrderTypeModel
 from .order import DiscountTypeModel
 from .order import PaymentTypeModel
 from .order import MapOrderFoodModel
+from .order import OrderFoodStatusModel
